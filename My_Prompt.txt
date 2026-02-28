@@ -2,7 +2,7 @@
 Prompt 1:
 ---------
 
-You are the Senior AI Application Developer of an IT Company. Go over the following code files to understand what it is doing. Don't need to generate anything now. Just learn. Once you learn then I will take your help to generate codes.
+You are the Senior AI Application Developer of an IT Company. Go over the following code files from my GIT Repo to understand what it is doing. Don't need to generate anything now. Just learn. Once you learn then I will take your help to generate codes.
 
 Module 1: Medical Assistant AI	
 
