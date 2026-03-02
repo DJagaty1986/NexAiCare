@@ -56,8 +56,8 @@ DB_PATH = str(BASE_DIR / "hc_data.db")
 PDF_PATH = str(BASE_DIR / "medical_diagnosis_manual.pdf")
 CSV_PATH = str(BASE_DIR / "finetuning_medical_testing.csv")
 VECTOR_DB_DIR = str(BASE_DIR / "Healthcare_db")
-LOGO_DARK_PATH = BASE_DIR / "logo" / "JadeGlobal_BW.PNG"
-LOGO_LIGHT_PATH = BASE_DIR / "logo" / "JadeGlobal_BW.PNG"
+LOGO_DARK_PATH = logo/JadeGlobal_BW.PNG
+LOGO_LIGHT_PATH = logo/jadeglobal.png
 
 MENU_ITEMS = {
     "📊 Dashboard": "dashboard",
@@ -81,9 +81,24 @@ def inject_css():
         """
     <style>
         /* ── Global ───────────────────────────────────────── */
-        .main .block-container {padding: 1.2rem 2rem 2rem 2rem; max-width:100%;}
+        #.main .block-container {padding: 1.2rem 2rem 2rem 2rem; max-width:100%;}
         h1, h2, h3 {color: #0A1628;}
-        .header-container {border-bottom: 1px solid #E0E0E0; margin-bottom: 20px; padding-bottom: 1rem;}
+        
+        /* 1. REMOVE TOP BLANK SPACE */
+        .block-container {
+            padding-top: 0rem !important; /* Reduces top padding significantly */
+            padding-bottom: 2rem !important;
+        }
+                
+        /* Hide the top header (including 'Deploy', hamburger menu, and 'Running' icon) */
+        .stAppHeader {
+            visibility: hidden;
+        }
+
+        /* Hide the 'Made with Streamlit' footer */
+        footer {
+            visibility: hidden;
+        }
 
         /* ── Sidebar ──────────────────────────────────────── */
         section[data-testid="stSidebar"] {
