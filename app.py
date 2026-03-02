@@ -22,6 +22,7 @@ from datetime import datetime
 import time
 import base64
 import warnings
+from PIL import Image
 
 from openai import OpenAI
 
@@ -39,9 +40,10 @@ warnings.filterwarnings("ignore")
 # ═══════════════════════════════════════════════════════════════════════════
 # PAGE CONFIG
 # ═══════════════════════════════════════════════════════════════════════════
+jadeimage = Image.open("logo/jadeglobalsmall.png")
 st.set_page_config(
     page_title="NexAiCare - Healthcare AI Platform",
-    page_icon="🏥",
+    page_icon=jadeimage,
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -54,7 +56,7 @@ DB_PATH = str(BASE_DIR / "hc_data.db")
 PDF_PATH = str(BASE_DIR / "medical_diagnosis_manual.pdf")
 CSV_PATH = str(BASE_DIR / "finetuning_medical_testing.csv")
 VECTOR_DB_DIR = str(BASE_DIR / "Healthcare_db")
-LOGO_DARK_PATH = BASE_DIR / "Jade_Global_Logo_Dark_Mode.PNG"
+LOGO_DARK_PATH = BASE_DIR / "JadeGlobal_BW.PNG"
 LOGO_LIGHT_PATH = BASE_DIR / "Jade_Global_Logo_Light_Mode.PNG"
 
 MENU_ITEMS = {
