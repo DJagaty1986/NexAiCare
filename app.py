@@ -102,8 +102,8 @@ def inject_css():
         /* --- Sidebar Width --- */
         /* Updated selector and fixed braces (single { } instead of {{ }}) */
         section[data-testid="stSidebar"] {
-            min-width: 300px !important;
-            max-width: 300px !important;
+            min-width: 280px !important;
+            max-width: 280px !important;
         }
 
         /* ── Sidebar ──────────────────────────────────────── */
