@@ -56,8 +56,8 @@ DB_PATH = str(BASE_DIR / "hc_data.db")
 PDF_PATH = str(BASE_DIR / "medical_diagnosis_manual.pdf")
 CSV_PATH = str(BASE_DIR / "finetuning_medical_testing.csv")
 VECTOR_DB_DIR = str(BASE_DIR / "Healthcare_db")
-LOGO_DARK_PATH = BASE_DIR / "logo" / "JadeGlobal_BW.PNG"
-LOGO_LIGHT_PATH = BASE_DIR / "logo" / "JadeGlobal_BW.PNG"
+LOGO_DARK_PATH = BASE_DIR / "logo" / "JadeGlobal_BW.png"
+LOGO_LIGHT_PATH = BASE_DIR / "logo" / "jadeglobal.png"
 
 MENU_ITEMS = {
     "📊 Dashboard": "dashboard",
@@ -1073,11 +1073,47 @@ def render_settings():
 def render_sidebar():
     with st.sidebar:
         # ── Logo ─────────────────────────────────────────────────────
-        logo_b64 = load_logo_b64(LOGO_DARK_PATH)
-        if logo_b64:
+        logo_dark_b64 = load_logo_b64(LOGO_DARK_PATH)
+        logo_light_b64 = load_logo_b64(LOGO_LIGHT_PATH)
+
+        if logo_dark_b64 and logo_light_b64:
+            st.markdown(
+                f"""
+                <style>
+                    /* Theme-based logo visibility */
+                    .logo-light {{ display: none; }}
+                    .logo-dark {{ display: block; }}
+
+                    /* Light theme detection */
+                    @media (prefers-color-scheme: light) {{
+                        .logo-light {{ display: block; }}
+                        .logo-dark {{ display: none; }}
+                    }}
+
+                    /* Streamlit light theme class detection */
+                    [data-testid="stAppViewContainer"][class*="light"] .logo-light,
+                    .stApp[class*="light"] .logo-light {{
+                        display: block;
+                    }}
+                    [data-testid="stAppViewContainer"][class*="light"] .logo-dark,
+                    .stApp[class*="light"] .logo-dark {{
+                        display: none;
+                    }}
+                </style>
+                <div class="logo-container">
+                    <img class="logo-dark" src="data:image/png;base64,{logo_dark_b64}" style="height:36px;">
+                    <img class="logo-light" src="data:image/png;base64,{logo_light_b64}" style="height:36px;">
+                    <div>
+                        <div class="logo-text">NexAiCare</div>
+                        <div class="logo-subtitle">Healthcare AI Platform</div>
+                    </div>
+                </div>""",
+                unsafe_allow_html=True,
+            )
+        elif logo_dark_b64:
             st.markdown(
                 f"""<div class="logo-container">
-                    <img src="data:image/png;base64,{logo_b64}" style="height:36px;">
+                    <img src="data:image/png;base64,{logo_dark_b64}" style="height:36px;">
                     <div>
                         <div class="logo-text">NexAiCare</div>
                         <div class="logo-subtitle">Healthcare AI Platform</div>
