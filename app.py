@@ -102,8 +102,8 @@ def inject_css():
         /* --- Sidebar Width --- */
         /* Updated selector and fixed braces (single { } instead of {{ }}) */
         section[data-testid="stSidebar"] {
-            min-width: 250px !important;
-            max-width: 250px !important;
+            min-width: 300px !important;
+            max-width: 300px !important;
         }
 
         /* ── Sidebar ──────────────────────────────────────── */
@@ -123,7 +123,6 @@ def inject_css():
         section[data-testid="stSidebar"] .stRadio > div [data-testid="stMarkdownContainer"] {
             font-weight: 500;
         }
-        
         /* --- Center the image in the sidebar --- */
         [data-testid="stSidebar"] [data-testid="stImage"] {
             text-align: center;
