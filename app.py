@@ -435,7 +435,7 @@ def render_module_1():
     ]
     cols = st.columns(2)
     for i, q in enumerate(sample_qs):
-        if cols[i % 2].button(q, key=f"sq_{i}", use_container_width=True):
+        if cols[i % 2].button(q, key=f"sq_{i}", width="stretch"):
             st.session_state.module1_chat_history.append({"role": "user", "content": q})
             with st.spinner("Searching knowledge base..."):
                 ans, srcs = get_rag_response(q, vectorstore, client)
@@ -557,7 +557,7 @@ def render_module_2():
     ]
     scols = st.columns(2)
     for i, sq in enumerate(samples):
-        if scols[i % 2].button(sq, key=f"aq_{i}", use_container_width=True):
+        if scols[i % 2].button(sq, key=f"aq_{i}", width="stretch"):
             st.session_state.module2_chat_history.append({"role": "user", "content": sq})
             with st.spinner("Processing audit query..."):
                 guard_res = input_guard_check(sq, llm)
@@ -683,7 +683,7 @@ def render_module_3():
             key="conv_input",
         )
 
-        generate_btn = st.button("Generate Summary", key="gen_summary", use_container_width=True)
+        generate_btn = st.button("Generate Summary", key="gen_summary", width="stretch")
 
     with right:
         st.markdown("#### Generated Clinical Summary")
@@ -716,7 +716,7 @@ def render_module_3():
         st.markdown("---")
         st.markdown("#### Recent Summaries")
         hist_df = pd.DataFrame(st.session_state.module3_history)
-        st.dataframe(hist_df, use_container_width=True, hide_index=True)
+        st.dataframe(hist_df, width="stretch", hide_index=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -765,7 +765,7 @@ def render_dashboard():
             legend=dict(orientation="h", y=-0.1),
             font=dict(size=13),
         )
-        st.plotly_chart(fig1, use_container_width=True)
+        st.plotly_chart(fig1, width="stretch")
 
     with ch2:
         dept_counts = df["department"].value_counts().reset_index()
@@ -784,7 +784,7 @@ def render_dashboard():
             xaxis_title="Number of Claims",
             font=dict(size=13),
         )
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width="stretch")
 
     # ── Row 3: More Charts ───────────────────────────────────────────
     ch3, ch4 = st.columns(2)
@@ -811,7 +811,7 @@ def render_dashboard():
             legend_title="Status",
             font=dict(size=13),
         )
-        st.plotly_chart(fig3, use_container_width=True)
+        st.plotly_chart(fig3, width="stretch")
 
     with ch4:
         top_providers = (
@@ -834,7 +834,7 @@ def render_dashboard():
             xaxis_title="Total Amount ($)",
             font=dict(size=13),
         )
-        st.plotly_chart(fig4, use_container_width=True)
+        st.plotly_chart(fig4, width="stretch")
 
     # ── Row 4: AI-Powered Insights ───────────────────────────────────
     st.markdown("### 💡 AI-Powered Insights")
@@ -951,7 +951,7 @@ def render_dashboard():
     ]
     st.dataframe(
         filtered[display_cols].style.format({"claim_amount": "${:,.2f}"}),
-        use_container_width=True,
+        width="stretch",
         height=400,
         hide_index=True,
     )
@@ -1064,7 +1064,7 @@ def render_settings():
         ("Clinical Diagnostic AI", "🔜 Coming Soon", "Phase 2"),
     ]
     status_df = pd.DataFrame(modules, columns=["Module", "Status", "Phase"])
-    st.dataframe(status_df, use_container_width=True, hide_index=True)
+    st.dataframe(status_df, width="stretch", hide_index=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
