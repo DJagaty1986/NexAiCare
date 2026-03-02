@@ -81,7 +81,6 @@ def inject_css():
         """
     <style>
         /* ── Global ───────────────────────────────────────── */
-        #.main .block-container {padding: 1.2rem 2rem 2rem 2rem; max-width:100%;}
         h1, h2, h3 {color: #0A1628;}
         
         /* 1. REMOVE TOP BLANK SPACE */
@@ -100,6 +99,13 @@ def inject_css():
             visibility: hidden;
         }
 
+        /* --- Sidebar Width --- */
+        /* Updated selector and fixed braces (single { } instead of {{ }}) */
+        section[data-testid="stSidebar"] {
+            min-width: 250px !important;
+            max-width: 250px !important;
+        }
+
         /* ── Sidebar ──────────────────────────────────────── */
         section[data-testid="stSidebar"] {
             background: linear-gradient(180deg, #0A1628 0%, #142d4c 100%);
@@ -116,6 +122,15 @@ def inject_css():
         section[data-testid="stSidebar"] .stRadio > div > label[data-checked="true"],
         section[data-testid="stSidebar"] .stRadio > div [data-testid="stMarkdownContainer"] {
             font-weight: 500;
+        }
+        
+        /* --- Center the image in the sidebar --- */
+        [data-testid="stSidebar"] [data-testid="stImage"] {
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
         }
 
         /* ── KPI Metric Cards ─────────────────────────────── */
@@ -301,12 +316,12 @@ def show_api_warning():
     st.warning("Please configure your OpenAI API key in **⚙️ Settings** to use this module.")
 
 
-def load_logo_b64(path):
-    """Return base64-encoded image if the logo file exists."""
-    if Path(path).exists():
-        data = Path(path).read_bytes()
-        return base64.b64encode(data).decode()
-    return None
+#def load_logo_b64(path):
+#    """Return base64-encoded image if the logo file exists."""
+#    if Path(path).exists():
+#        data = Path(path).read_bytes()
+#        return base64.b64encode(data).decode()
+#    return None
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1088,33 +1103,9 @@ def render_settings():
 def render_sidebar():
     with st.sidebar:
         # ── Logo ─────────────────────────────────────────────────────
-        logo_b64 = load_logo_b64(LOGO_DARK_PATH)
-        if logo_b64:
-            st.markdown(
-                f"""<div class="logo-container">
-                    <img src="data:image/png;base64,{logo_b64}" style="height:36px;">
-                    <div>
-                        <div class="logo-text">NexAiCare</div>
-                        <div class="logo-subtitle">Healthcare AI Platform</div>
-                    </div>
-                </div>""",
-                unsafe_allow_html=True,
-            )
-        else:
-            st.markdown(
-                """<div class="logo-container">
-                    <div>
-                        <div style="font-size:14px; font-weight:700; color:#FF6B35; letter-spacing:1px;">JADE</div>
-                        <div style="font-size:9px; color:rgba(255,255,255,0.5); letter-spacing:2px;">GLOBAL</div>
-                    </div>
-                    <div>
-                        <div class="logo-text">NexAiCare</div>
-                        <div class="logo-subtitle">Healthcare AI Platform</div>
-                    </div>
-                </div>""",
-                unsafe_allow_html=True,
-            )
-
+        st.image('logo/jadeglobal.png')
+        st.markdown("<h2 style='text-align: center;'>NexAiCare</h2>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center;'>Healthcare AI Platform</h4>", unsafe_allow_html=True)
         st.markdown("---")
 
         # ── Navigation ───────────────────────────────────────────────
