@@ -11,3 +11,8 @@ enableCORS = false
 
 [browser]
 gatherUsageStats = false
+
+[theme.sidebar]
+
+[client]
+showSidebarNavigation=false
