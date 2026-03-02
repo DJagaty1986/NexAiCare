@@ -83,6 +83,7 @@ def inject_css():
         /* ── Global ───────────────────────────────────────── */
         .main .block-container {padding: 1.2rem 2rem 2rem 2rem; max-width:100%;}
         h1, h2, h3 {color: #0A1628;}
+        .header-container {border-bottom: 1px solid #E0E0E0; margin-bottom: 20px; padding-bottom: 1rem;}
 
         /* ── Sidebar ──────────────────────────────────────── */
         section[data-testid="stSidebar"] {
