@@ -56,8 +56,7 @@ DB_PATH = str(BASE_DIR / "hc_data.db")
 PDF_PATH = str(BASE_DIR / "medical_diagnosis_manual.pdf")
 CSV_PATH = str(BASE_DIR / "finetuning_medical_testing.csv")
 VECTOR_DB_DIR = str(BASE_DIR / "Healthcare_db")
-LOGO_DARK_PATH = BASE_DIR / "logo" / "JadeGlobal_BW.png"
-LOGO_LIGHT_PATH = BASE_DIR / "logo" / "jadeglobal.png"
+LOGO_PATH = BASE_DIR / "logo" / "JadeGlobal_BW.png"
 
 MENU_ITEMS = {
     "📊 Dashboard": "dashboard",
@@ -89,8 +88,39 @@ def inject_css():
         section[data-testid="stSidebar"] {
             background: linear-gradient(180deg, #0A1628 0%, #142d4c 100%);
         }
+        section[data-testid="stSidebar"] > div:first-child {
+            padding-top: 0 !important;
+        }
+        section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+            padding-top: 1rem !important;
+        }
         section[data-testid="stSidebar"] * {color: rgba(255,255,255,0.85) !important;}
         section[data-testid="stSidebar"] hr {border-color: rgba(255,255,255,0.15);}
+
+        /* ── Logo Container ──────────────────────────────── */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .logo-container img {
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff !important;
+            letter-spacing: 1px;
+        }
+        .logo-subtitle {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6) !important;
+            letter-spacing: 0.5px;
+        }
         section[data-testid="stSidebar"] .stRadio > div > label {
             padding: 9px 14px; border-radius: 8px; margin: 1px 0;
             font-size: 14.5px; transition: background .2s;
@@ -1073,65 +1103,22 @@ def render_settings():
 def render_sidebar():
     with st.sidebar:
         # ── Logo ─────────────────────────────────────────────────────
-        logo_dark_b64 = load_logo_b64(LOGO_DARK_PATH)
-        logo_light_b64 = load_logo_b64(LOGO_LIGHT_PATH)
+        logo_b64 = load_logo_b64(LOGO_PATH)
 
-        if logo_dark_b64 and logo_light_b64:
-            st.markdown(
-                f"""
-                <style>
-                    /* Theme-based logo visibility */
-                    .logo-light {{ display: none; }}
-                    .logo-dark {{ display: block; }}
-
-                    /* Light theme detection */
-                    @media (prefers-color-scheme: light) {{
-                        .logo-light {{ display: block; }}
-                        .logo-dark {{ display: none; }}
-                    }}
-
-                    /* Streamlit light theme class detection */
-                    [data-testid="stAppViewContainer"][class*="light"] .logo-light,
-                    .stApp[class*="light"] .logo-light {{
-                        display: block;
-                    }}
-                    [data-testid="stAppViewContainer"][class*="light"] .logo-dark,
-                    .stApp[class*="light"] .logo-dark {{
-                        display: none;
-                    }}
-                </style>
-                <div class="logo-container">
-                    <img class="logo-dark" src="data:image/png;base64,{logo_dark_b64}" style="height:36px;">
-                    <img class="logo-light" src="data:image/png;base64,{logo_light_b64}" style="height:36px;">
-                    <div>
-                        <div class="logo-text">NexAiCare</div>
-                        <div class="logo-subtitle">Healthcare AI Platform</div>
-                    </div>
-                </div>""",
-                unsafe_allow_html=True,
-            )
-        elif logo_dark_b64:
+        if logo_b64:
             st.markdown(
                 f"""<div class="logo-container">
-                    <img src="data:image/png;base64,{logo_dark_b64}" style="height:36px;">
-                    <div>
-                        <div class="logo-text">NexAiCare</div>
-                        <div class="logo-subtitle">Healthcare AI Platform</div>
-                    </div>
+                    <img src="data:image/png;base64,{logo_b64}">
+                    <div class="logo-text">NexAiCare</div>
+                    <div class="logo-subtitle">Healthcare AI Platform</div>
                 </div>""",
                 unsafe_allow_html=True,
             )
         else:
             st.markdown(
                 """<div class="logo-container">
-                    <div>
-                        <div style="font-size:14px; font-weight:700; color:#FF6B35; letter-spacing:1px;">JADE</div>
-                        <div style="font-size:9px; color:rgba(255,255,255,0.5); letter-spacing:2px;">GLOBAL</div>
-                    </div>
-                    <div>
-                        <div class="logo-text">NexAiCare</div>
-                        <div class="logo-subtitle">Healthcare AI Platform</div>
-                    </div>
+                    <div class="logo-text">NexAiCare</div>
+                    <div class="logo-subtitle">Healthcare AI Platform</div>
                 </div>""",
                 unsafe_allow_html=True,
             )
