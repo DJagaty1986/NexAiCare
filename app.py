@@ -166,11 +166,14 @@ def inject_css():
         /* ── Page Header ──────────────────────────────────── */
         .page-header {
             background: linear-gradient(135deg, #0A1628, #1B3A5C);
-            color: #fff; padding: 28px 32px; border-radius: 14px;
+            color: #fff; 
+            padding: 28px 32px; 
+            border-radius: 14px;
             margin-bottom: 24px;
+            text-align: center;
         }
-        .page-header h2 {color: #fff !important; margin:0 0 6px 0; font-size:26px;}
-        .page-header p  {color: rgba(255,255,255,0.75); margin:0; font-size:14.5px;}
+        .page-header h2 {color: #fff !important; margin:0 0 6px 0; font-size:34px;}
+        .page-header p  {color: rgba(255,255,255,0.75); margin:0; font-size:16px;}
 
         /* ── Chat Messages ────────────────────────────────── */
         .stChatMessage {border-radius: 12px !important;}
