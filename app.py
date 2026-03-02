@@ -1103,7 +1103,7 @@ def render_settings():
 def render_sidebar():
     with st.sidebar:
         # ── Logo ─────────────────────────────────────────────────────
-        st.image('logo/jadeglobal.png')
+        st.image('logo/JadeGlobal_BW.png')
         st.markdown("<h2 style='text-align: center;'>NexAiCare</h2>", unsafe_allow_html=True)
         st.markdown("<h4 style='text-align: center;'>Healthcare AI Platform</h4>", unsafe_allow_html=True)
         st.markdown("---")
