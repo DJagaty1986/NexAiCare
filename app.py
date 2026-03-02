@@ -70,7 +70,7 @@ MENU_ITEMS = {
     "⚙️ Settings": "settings",
 }
 
-STATUS_COLORS = {"Paid": "#28a745", "Denied": "#dc3545", "Pending": "#ffc107"}
+STATUS_COLORS = {"Paid": "#A6FFBB", "Denied": "#FFA6B1", "Pending": "#FFC100"}
 
 
 # ═══════════════════════════════════════════════════════════════════════════
