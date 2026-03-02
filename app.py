@@ -805,7 +805,7 @@ def render_dashboard():
             y="Department",
             orientation="h",
             title="Claims by Department",
-            color_discrete_sequence=["#1B3A5C"],
+            color_discrete_sequence=["#87C0FF"],
         )
         fig2.update_layout(
             margin=dict(t=40, b=20, l=20, r=20),
@@ -855,7 +855,7 @@ def render_dashboard():
             y="provider_id",
             orientation="h",
             title="Top 10 Providers by Claim Amount",
-            color_discrete_sequence=["#FF6B35"],
+            color_discrete_sequence=["#FFAA8A"],
         )
         fig4.update_layout(
             margin=dict(t=40, b=20, l=20, r=20),
