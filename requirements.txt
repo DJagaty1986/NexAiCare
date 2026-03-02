@@ -29,6 +29,9 @@ tiktoken>=0.7.0
 pandas>=2.0.0
 plotly>=5.18.0
 
+# Image Processing
+Pillow>=10.0.0
+
 # Utilities (usually pre-installed)
 # sqlite3   — built-in
 # pathlib   — built-in
