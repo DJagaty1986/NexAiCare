@@ -56,8 +56,8 @@ DB_PATH = str(BASE_DIR / "hc_data.db")
 PDF_PATH = str(BASE_DIR / "medical_diagnosis_manual.pdf")
 CSV_PATH = str(BASE_DIR / "finetuning_medical_testing.csv")
 VECTOR_DB_DIR = str(BASE_DIR / "Healthcare_db")
-LOGO_DARK_PATH = logo/JadeGlobal_BW.PNG
-LOGO_LIGHT_PATH = logo/jadeglobal.png
+LOGO_DARK_PATH = "logo"/"JadeGlobal_BW.PNG"
+LOGO_LIGHT_PATH = "logo"/"jadeglobal.png"
 
 MENU_ITEMS = {
     "📊 Dashboard": "dashboard",
